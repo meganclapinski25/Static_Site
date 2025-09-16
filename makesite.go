@@ -14,11 +14,13 @@ type Page struct{
 }
 
 func main(){
-	//Flag 
-	dir := flag.String("dir", "", "")
+
 	inFile := flag.String("file", "first-post.txt", "")
+	dir := flag.String("dir", "", " ")
 	flag.Parse()
 
+
+	_ = *dir
 	//Reads the first post file and stores
 	fileContents, err := os.ReadFile(*inFile)
 	if err != nil {
@@ -31,34 +33,18 @@ func main(){
 		panic(err)
 	}
 
-	temp, err:=os.ReadDir(*dir)
-	if err != nil{
-		panic(err)
-	}
-
-	for _, e := range entries {
-		if e.IsDir() {
-			continue
-		}
-		name := e.Name()
-		if strings.HasSuffix(strings.ToLower(name), ".txt") {
-			// print each .txt to stdout (full path)
-			fmt.Println(filepath.Join(listDir, name))
-		}
-	}
-
-
-
 	// The page now has to get the title and content filled 
 	page := Page{
 		Content: string(fileContents),
 	}
+
 	// Remove the extension 
 	outPath := strings.TrimSuffix(*inFile, filepath.Ext(*inFile)) + ".html"
 	
 	t.Execute (os.Stdout, page)
 
 	//creates the new file in html 
+	
 	newFile, err := os.Create(outPath)
 	if err!=nil{
 		panic(err)

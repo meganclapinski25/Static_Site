@@ -5,6 +5,8 @@ import (
 	"os"
 	//"fmt"
 	"flag"
+	"path/filepath"
+	"strings"
 )
 
 type Page struct{
@@ -32,12 +34,13 @@ func main(){
 	page := Page{
 		Content: string(fileContents),
 	}
-
+	// Remove the extension 
+	outPath := strings.TrimSuffix(*inFile, filepath.Ext(*inFile)) + ".html"
 	
 	t.Execute (os.Stdout, page)
 
 	//creates the new file in html 
-	newFile, err := os.Create("first-post.html")
+	newFile, err := os.Create(outPath)
 	if err!=nil{
 		panic(err)
 	}

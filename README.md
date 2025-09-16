@@ -54,11 +54,11 @@ If you get stuck on any step, be sure to print the output to `stdout`!
 - [ x] Edit the provided HTML template (`template.tmpl`) to display the contents of `first-post.txt`.
 - [x] Render the contents of `first-post.txt` using Go Templates and print it to stdout.
 - [x] Write the HTML template to the filesystem to a file. Name it `first-post.html`.
-- [ x] Manually test the generated HTML page by running `./makesite`. Double-click the `first-post.html` file that appears in your directory after running the command to open the generated page in your browser.
-- [x ] **Add, commit, and push to GitHub**.
-- [ x] Add a new flag to your command named `file`. This flag represents the name of any `.txt` file in the same directory as your program. Run `./makesite --file=latest-post.txt` to test.
-- [ x] Update the `save` function to use the input filename to generate a new HTML file. For example, if the input file is named `latest-post.txt`, the generated HTML file should be named `latest-post.html`.
-- [x ] **Add, commit, and push to GitHub**.
+- [x] Manually test the generated HTML page by running `./makesite`. Double-click the `first-post.html` file that appears in your directory after running the command to open the generated page in your browser.
+- [x] **Add, commit, and push to GitHub**.
+- [x] Add a new flag to your command named `file`. This flag represents the name of any `.txt` file in the same directory as your program. Run `./makesite --file=latest-post.txt` to test.
+- [x] Update the `save` function to use the input filename to generate a new HTML file. For example, if the input file is named `latest-post.txt`, the generated HTML file should be named `latest-post.html`.
+- [x] **Add, commit, and push to GitHub**.
 
 #### v1.0 Stretch Challenges
 
@@ -87,12 +87,12 @@ If you get stuck on any step, be sure to print the output to `stdout`!
 
 #### v1.2 Requirements
 
-- [ ] Initialize Go modules in your project.
-- [ ] Add any third party library to your project to enhance it's functionality. Some ideas you might consider include **_(CHOOSE ONLY ONE)_**:
+- [x ] Initialize Go modules in your project.
+- [ x] Add any third party library to your project to enhance it's functionality. Some ideas you might consider include **_(CHOOSE ONLY ONE)_**:
     - [ ] Translating page content using Google Translate.
     - [ ] Parse Markdown (`.md`) files and transform them into HTML. `#` through `######` should translate to `<h1>` through `<h6>` elements.
     - [ ] **_FILL IN THE BLANK_**: `I will use the __________________________________ library. The documentation is located at __________________________________. My goal is to use it to __________________________________.`
-- [ ] **Add, commit, and push to GitHub**.
+- [ x] **Add, commit, and push to GitHub**.
 
 ## Resources
 

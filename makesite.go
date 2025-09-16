@@ -7,6 +7,7 @@ import (
 	"flag"
 	"path/filepath"
 	"strings"
+	//"github.com/bregydoc/gtranslate"
 )
 
 type Page struct{
@@ -18,6 +19,11 @@ func main(){
 	inFile := flag.String("file", "first-post.txt", "")
 	dir := flag.String("dir", "", " ")
 	flag.Parse()
+
+	t, err :=template.ParseFiles("template.tmpl")
+	if err !=nil{
+		panic(err)
+	}
 
 	// if the --dir is asked, and doesn't equal nothing 
 	
@@ -56,6 +62,9 @@ func main(){
 			if err != nil{
 				panic(err)
 			}
+			if err := t.Execute(f,page); err != nil{
+				panic(err)
+			}
 			f.Close()
 		}
 		
@@ -67,10 +76,7 @@ func main(){
 	}
 
 	// Parse the template file into an object = t
-	t, err :=template.ParseFiles("template.tmpl")
-	if err !=nil{
-		panic(err)
-	}
+	
 
 	// The page now has to get the title and content filled 
 	page := Page{

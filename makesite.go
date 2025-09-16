@@ -7,7 +7,12 @@ import (
 	"flag"
 	"path/filepath"
 	"strings"
-	//"github.com/bregydoc/gtranslate"
+	"bytes"
+    "github.com/yuin/goldmark"
+    "github.com/yuin/goldmark/parser"
+    "github.com/yuin/goldmark/renderer/html"
+	
+	
 )
 
 type Page struct{
@@ -75,7 +80,26 @@ func main(){
 		panic(err) 
 	}
 
-	// Parse the template file into an object = t
+	//markdown logic 
+	ext:= strings.ToLower(filepath.Ext(*inFile))
+	if ext == ".md" || ext == ".markdown"{
+		var buf bytes.Buffer
+
+		md:= goldmark.New(
+			goldmark.WithParserOptions(
+				parser.WithAutoHeadingID(),
+			),
+			goldmark.WithRendererOptions(
+				html.WithHardWraps(),
+				html.WithUnsafe(),
+			),
+		)
+		temp := parser.NewContext()
+		if err := md.Convert(fileContents, &buf, parser.WithContext(temp)); err !=nil{
+			panic(err)
+		}
+		fileContents = buf.Bytes()
+	}
 	
 
 	// The page now has to get the title and content filled 

@@ -14,7 +14,8 @@ type Page struct{
 }
 
 func main(){
-
+	//Flag 
+	dir := flag.String("dir", "", "")
 	inFile := flag.String("file", "first-post.txt", "")
 	flag.Parse()
 
@@ -29,6 +30,24 @@ func main(){
 	if err !=nil{
 		panic(err)
 	}
+
+	temp, err:=os.ReadDir(*dir)
+	if err != nil{
+		panic(err)
+	}
+
+	for _, e := range entries {
+		if e.IsDir() {
+			continue
+		}
+		name := e.Name()
+		if strings.HasSuffix(strings.ToLower(name), ".txt") {
+			// print each .txt to stdout (full path)
+			fmt.Println(filepath.Join(listDir, name))
+		}
+	}
+
+
 
 	// The page now has to get the title and content filled 
 	page := Page{

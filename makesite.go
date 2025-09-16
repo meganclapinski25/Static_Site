@@ -4,6 +4,7 @@ import (
 	"text/template"
 	"os"
 	//"fmt"
+	"flag"
 )
 
 type Page struct{
@@ -12,8 +13,11 @@ type Page struct{
 
 func main(){
 
+	inFile := flag.String("file", "first-post.txt", "")
+	flag.Parse()
+
 	//Reads the first post file and stores
-	fileContents, err := os.ReadFile("first-post.txt")
+	fileContents, err := os.ReadFile(*inFile)
 	if err != nil {
 		panic(err) 
 	}
